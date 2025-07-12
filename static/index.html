@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Correcteur de texte</title>
+    <style>
+        body { font-family: Arial; max-width: 800px; margin: 2em auto; }
+        textarea { width: 100%; height: 150px; }
+        .correction, .details { margin-top: 20px; }
+        u { text-decoration: underline red wavy; }
+    </style>
+</head>
+<body>
+    <h1>Correcteur de fautes en français</h1>
+    <textarea id="texte" placeholder="Écris ton texte ici..."></textarea><br>
+    <button onclick="corriger()">Corriger</button>
+
+    <div class="correction">
+        <h3>Texte corrigé :</h3>
+        <p id="corrige"></p>
+    </div>
+
+    <div class="details">
+        <h3>Texte original avec fautes soulignées :</h3>
+        <p id="souligne"></p>
+        <h4>Détails :</h4>
+        <ul id="explications"></ul>
+    </div>
+
+    <script>
+    async function corriger() {
+        const texte = document.getElementById('texte').value;
+        const res = await fetch('/corriger', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({texte})
+        });
+        const data = await res.json();
+        document.getElementById('corrige').innerText = data.corrige;
+        document.getElementById('souligne').innerHTML = data.avec_soulignage;
+
+        const ul = document.getElementById('explications');
+        ul.innerHTML = '';
+        data.details.forEach(d => {
+            const li = document.createElement('li');
+            li.textContent = `Erreur: "${d.erreur}", Suggestion: "${d.suggestion}" (${d.explication})`;
+            ul.appendChild(li);
+        });
+    }
+    </script>
+</body>
+</html>
