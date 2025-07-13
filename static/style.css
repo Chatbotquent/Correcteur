@@ -19,11 +19,13 @@ body {
 
 .container {
     width: 90%;
-    max-width: 800px;
-    background: #ffffff;
-    padding: 30px;
+    max-width: 700px;
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.25);
     border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    padding: 30px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     animation: fadeIn 1s ease;
 }
 
@@ -46,13 +48,15 @@ textarea {
     border: 2px solid #0d6efd;
     font-size: 1.1em;
     margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.5);
     box-shadow: inset 0 4px 10px rgba(0,0,0,0.1);
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, background 0.3s;
 }
 
 textarea:focus {
     border-color: #0b5ed7;
     outline: none;
+    background: rgba(255, 255, 255, 0.8);
 }
 
 button {
@@ -83,7 +87,7 @@ button:hover {
 }
 
 .highlight {
-    background: #ffe0e0;
+    background: rgba(255, 100, 100, 0.2);
     border-bottom: 2px dashed #ff4d4d;
     text-decoration: underline wavy #ff4d4d;
     padding: 2px 4px;
