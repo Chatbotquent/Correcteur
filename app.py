@@ -8,10 +8,6 @@ tool = language_tool_python.LanguageToolPublicAPI('fr')
 def index():
     return send_from_directory('static', 'index.html')
 
-@app.route('/style.css')
-def style():
-    return send_from_directory('static', 'style.css')
-
 @app.route('/corriger', methods=['POST'])
 def corriger():
     data = request.get_json()
