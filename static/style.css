@@ -1,5 +1,5 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
     background: #f0f2f5;
     color: #333;
     margin: 0;
@@ -34,7 +34,7 @@ textarea {
 
 button {
     background: #007bff;
-    color: #fff;
+    color: white;
     padding: 12px 25px;
     border: none;
     border-radius: 10px;
