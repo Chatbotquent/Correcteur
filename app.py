@@ -2,11 +2,15 @@ from flask import Flask, request, jsonify, send_from_directory
 import language_tool_python
 
 app = Flask(__name__, static_folder='static')
-tool = language_tool_python.LanguageToolPublicAPI('fr')  # <<< important
+tool = language_tool_python.LanguageToolPublicAPI('fr')
 
 @app.route('/')
 def index():
     return send_from_directory('static', 'index.html')
+
+@app.route('/style.css')
+def style():
+    return send_from_directory('static', 'style.css')
 
 @app.route('/corriger', methods=['POST'])
 def corriger():
@@ -25,9 +29,9 @@ def corriger():
         end = start + m.errorLength
         correction = m.replacements[0] if m.replacements else ''
         texte_souligne = (texte_souligne[:start] +
-                          "<u style='color:red'>" + texte_souligne[start:end] + "</u>" +
+                          "<span class='highlight'>" + texte_souligne[start:end] + "</span>" +
                           texte_souligne[end:])
-        offset += len("<u style='color:red'></u>")
+        offset += len("<span class='highlight'></span>")
 
         details.append({
             "erreur": texte[m.offset:m.offset+m.errorLength],
