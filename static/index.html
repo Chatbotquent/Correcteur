@@ -2,29 +2,25 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Correcteur de texte</title>
-    <style>
-        body { font-family: Arial; max-width: 800px; margin: 2em auto; }
-        textarea { width: 100%; height: 150px; }
-        .correction, .details { margin-top: 20px; }
-        u { text-decoration: underline red wavy; }
-    </style>
+    <title>Correcteur avancé</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1>Correcteur de fautes en français</h1>
-    <textarea id="texte" placeholder="Écris ton texte ici..."></textarea><br>
-    <button onclick="corriger()">Corriger</button>
+    <div class="container">
+        <h1>📝 Correcteur de texte</h1>
+        <textarea id="texte" placeholder="Écris ou colle ton texte ici..."></textarea>
+        <button onclick="corriger()">Corriger</button>
 
-    <div class="correction">
-        <h3>Texte corrigé :</h3>
-        <p id="corrige"></p>
-    </div>
+        <div class="result">
+            <h2>Texte corrigé :</h2>
+            <p id="corrige"></p>
 
-    <div class="details">
-        <h3>Texte original avec fautes soulignées :</h3>
-        <p id="souligne"></p>
-        <h4>Détails :</h4>
-        <ul id="explications"></ul>
+            <h2>Texte original avec fautes soulignées :</h2>
+            <p id="souligne"></p>
+
+            <h3>Détails des fautes :</h3>
+            <ul id="explications"></ul>
+        </div>
     </div>
 
     <script>
